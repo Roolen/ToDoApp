@@ -15,10 +15,17 @@
         <Label HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,30,0,0"
                FontSize="10" Padding="5,2,5,2">Текст задачи</Label>
         <TextBox Name="TextTask" HorizontalAlignment="Stretch" VerticalAlignment="Top"
-                 Margin="130,5,170,0" MinHeight="25" ToolTip="Текст задания" Padding="5,5,5,5"></TextBox>
+                 Margin="130,5,260,0" MinHeight="25" ToolTip="Текст задания" Padding="5,5,5,5"></TextBox>
+        
+        <Label HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,190,0"
+               FontSize="10" Padding="5,2,5,2">Дата начала</Label>
+        <xc:DateTimePicker Name="DateStart" HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Margin="0,5,165,0" Width="90" Height="28" Padding="5,5,5,5"></xc:DateTimePicker>
+        
+        
         <Label HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,70,0"
                FontSize="10" Padding="5,2,5,2">Дата завершения</Label>
-        <xc:DateTimePicker Name="Date" HorizontalAlignment="Right" VerticalAlignment="Top"
+        <xc:DateTimePicker Name="DateFinish" HorizontalAlignment="Right" VerticalAlignment="Top"
                     Margin="0,5,70,0" Width="90" Height="28" Padding="5,5,5,5"></xc:DateTimePicker>
 
         <Button Name="CreateTaskButton" HorizontalAlignment="Right" VerticalAlignment="Top"

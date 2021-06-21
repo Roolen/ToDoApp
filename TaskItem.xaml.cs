@@ -22,14 +22,22 @@ namespace ToDoApp
     {
         public int id;
         private MainWindow ma;
-        public TaskItem(string text, string date, int id, MainWindow ma)
+        private Brush backIsComplete = new SolidColorBrush(new Color() { R = 50, G = 50, B = 150, A = 1 });
+        public TaskItem(string text, string dateStart, string dateFinish, int id, bool isComplete, MainWindow ma)
         {
             InitializeComponent();
 
             this.ma = ma;
             this.id = id;
             TextTask.Text = text;
-            TextDate.Text = date;
+            CompleteBox.IsChecked = isComplete;
+            TextDateStart.Text = dateStart;
+            TextDateFinish.Text = dateFinish;
+
+            if (isComplete == true)
+            {
+                Background = backIsComplete;
+            }
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -43,8 +51,21 @@ namespace ToDoApp
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var window = new EditWindow(TextTask.Text, TextDate.Text, id, ma);
+            var window = new EditWindow(TextTask.Text, TextDateStart.Text, TextDateFinish.Text, id, ma);
             window.ShowDialog();
+        }
+
+        private void CompleteBox_Checked(object sender, RoutedEventArgs e)
+        {
+            using var context = new DataContext();
+            var task = context.Tasks.Find(id);
+            task.isComplete = CompleteBox.IsChecked ?? false;
+            context.SaveChanges();
+
+            if (CompleteBox.IsChecked == true)
+            {
+                Background = backIsComplete;
+            }
         }
     }
 }

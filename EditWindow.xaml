@@ -11,11 +11,16 @@
         <Label HorizontalAlignment="Center" VerticalAlignment="Top"
                Margin="0,20,0,0" FontSize="16" FontWeight="Bold">Редактирование</Label>
 
-        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,150">Текст</Label>
-        <TextBox Name="TextTask" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="30,0,30,30" Height="80"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,200">Текст</Label>
+        <TextBox Name="TextTask" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="30,0,30,90" Height="80"/>
 
-        <xc:DateTimePicker Name="DateTask" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,100,0,0" Width="180" Height="30"></xc:DateTimePicker>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,30,0,0">Дата начала</Label>
+        <xc:DateTimePicker Name="DateTaskStart" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="0,80,0,0" Width="180" Height="25"></xc:DateTimePicker>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,140,0,0">Дата завершения</Label>
+        <xc:DateTimePicker Name="DateTaskFinish" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Margin="0,190,0,0" Width="180" Height="25"></xc:DateTimePicker>
 
-        <Button Name="ApplyButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,60" Padding="5,5,5,5" Click="ApplyButton_Click">Принять</Button>
+        <Button Name="ApplyButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40" Padding="5,5,5,5" Click="ApplyButton_Click">Принять</Button>
     </Grid>
 </Window>

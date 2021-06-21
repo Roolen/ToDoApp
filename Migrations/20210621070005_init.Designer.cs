@@ -9,8 +9,8 @@ using ToDoApp;
 namespace ToDoApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210618195353_initial")]
-    partial class initial
+    [Migration("20210621070005_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,10 +41,16 @@ namespace ToDoApp.Migrations
                     b.Property<DateTime>("Finish")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Text")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isComplete")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("TaskId");

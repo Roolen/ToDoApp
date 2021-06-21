@@ -39,10 +39,16 @@ namespace ToDoApp.Migrations
                     b.Property<DateTime>("Finish")
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Text")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("isComplete")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("TaskId");

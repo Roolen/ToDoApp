@@ -21,11 +21,13 @@ namespace ToDoApp
         {
             using var context = new DataContext();
             var tasks = context.Tasks.ToList();
+            tasks = tasks.OrderBy(t => t.Finish).ToList();
 
             ItemsPanel.Children.Clear();
             foreach (var task in tasks)
             {
-                var item = new TaskItem(task.Text, task.Finish.ToString(), task.TaskId, this);
+                var item = new TaskItem(task.Text, task.Start.ToString(),
+                    task.Finish.ToString(), task.TaskId, task.isComplete, this);
                 ItemsPanel.Children.Add(item);
             }
         }
@@ -40,7 +42,9 @@ namespace ToDoApp
             var task = new Task()
             {
                 Text = TextTask.Text,
-                Finish = Date.Value ?? DateTime.Now,
+                isComplete = false,
+                Start = DateStart.Value ?? DateTime.Now,
+                Finish = DateFinish.Value ?? DateTime.Now,
                 User = user
             };
 

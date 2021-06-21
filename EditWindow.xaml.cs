@@ -21,12 +21,13 @@ namespace ToDoApp
     {
         public int idTask;
         private MainWindow ma;
-        public EditWindow(string text, string date, int id, MainWindow ma)
+        public EditWindow(string text, string dateStart, string dateFinish, int id, MainWindow ma)
         {
             InitializeComponent();
 
             TextTask.Text = text;
-            DateTask.Text = date;
+            DateTaskStart.Text = dateStart;
+            DateTaskFinish.Text = dateFinish;
             idTask = id;
             this.ma = ma;
         }
@@ -36,7 +37,8 @@ namespace ToDoApp
             using var context = new DataContext();
             var task = context.Tasks.Find(idTask);
             task.Text = TextTask.Text;
-            task.Finish = DateTask.Value ?? DateTime.Now;
+            task.Start = DateTaskStart.Value ?? DateTime.Now;
+            task.Finish = DateTaskFinish.Value ?? DateTime.Now;
 
             context.Tasks.Update(task);
             context.SaveChanges();
