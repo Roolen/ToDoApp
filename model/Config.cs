@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDoApp.model
 {
-    class Config
+    public class Config
     {
         [Key]
         public int ConfigId { get; set; }

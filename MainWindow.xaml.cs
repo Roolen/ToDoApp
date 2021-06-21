@@ -5,6 +5,13 @@ using ToDoApp.model;
 
 namespace ToDoApp
 {
+    public enum SortType
+    {
+        Start,
+        Finish,
+        Checked
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -17,11 +24,16 @@ namespace ToDoApp
             UpdateListTasks();
         }
 
-        public void UpdateListTasks()
+        public void UpdateListTasks(SortType sortType = SortType.Finish)
         {
             using var context = new DataContext();
             var tasks = context.Tasks.ToList();
-            tasks = tasks.OrderBy(t => t.Finish).ToList();
+            tasks = sortType switch
+            {
+                SortType.Finish => tasks.OrderBy(t => t.Finish).ToList(),
+                SortType.Start  => tasks.OrderBy(t => t.Start).ToList(),
+                _               => tasks
+            };
 
             ItemsPanel.Children.Clear();
             foreach (var task in tasks)
@@ -65,6 +77,18 @@ namespace ToDoApp
             var window = new AuthorizeWindow();
             window.Show();
             this.Close();
+        }
+
+        private void ByStartButton_Click(object sender, RoutedEventArgs e) => UpdateListTasks(SortType.Start);
+
+        private void ByFinishButton_Click(object sender, RoutedEventArgs e) => UpdateListTasks();
+
+        private void GraphButton_Click(object sender, RoutedEventArgs e)
+        {
+            using var context = new DataContext();
+            var tasks = context.Tasks.ToList();
+            var window = new GraphicWindow();
+            window.Show();
         }
     }
 }

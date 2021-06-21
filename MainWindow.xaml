@@ -30,8 +30,17 @@
 
         <Button Name="CreateTaskButton" HorizontalAlignment="Right" VerticalAlignment="Top"
                 Margin="0,5,5,0" Padding="5,5,5,5" Click="CreateTaskButton_Click">Создать</Button>
-        <ScrollViewer Margin="0,52,0,0" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Margin="0,52,0,25" VerticalScrollBarVisibility="Auto">
             <StackPanel Name="ItemsPanel" VerticalAlignment="Stretch" Margin="0,-1,0,0" />
         </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Button Name="ByStartButton" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                    Margin="5,0,0,5" Click="ByStartButton_Click">По старту</Button>
+            <Button Name="ByFinishButton" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                    Margin="0,0,0,5" Click="ByFinishButton_Click">По окончанию</Button>
+        </StackPanel>
+        
+        <Button Name="GraphButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,5" Click="GraphButton_Click">График</Button>
     </Grid>
 </Window>
